@@ -1,26 +1,9 @@
-require 'sinatra'
+require 'sinatra/base'
 
-set :session_secret, "Testing"
+class Battle < Sinatra::Base
+    get '/' do
+        'Hello Battle!'
+    end
 
-get '/' do
-    "Hello World"
-  end
-  
-  get '/secret' do
-    'Meow meow meow meow'
-  end
-
-  get '/test' do
-    'Testing again'
-  end
-
-get '/random-cat' do 
-    @cat_name = ["Amigo", "Oscar", "Viking"].sample
-    erb(:index)
-end
-
-get '/named-cat' do
-  p params
-  @name = params[:name]
-  erb :index
+    run! if app_file == $0
 end
